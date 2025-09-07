@@ -1,3 +1,12 @@
+Hi,
+Steps:
+1. Clone the repository from GitHub.
+2. Step into the cloned repository.
+3. run: pipenv install  (Installs the dependencies in the Pipfile)
+4. run: pipenv shell (Activates the virtual environment)
+5. run: python manage.py runserver (Continue from there)
+
+
 SUPERUSER
 user: admin_01
 email: admin.01@lemon.com
@@ -37,3 +46,12 @@ ___
 Bookings API: IsAuthenticated -> requires token or session
 MenuItem API: IsAuthenticatedOrReadOnly -> anyone can view menu, only auth can change
 ___
+
+
+Practice Peer-graded Assignment: Little Lemon Web Application
+
+Project Title
+Back-end developer capstone project
+
+https://github.com/Hassan-elSayyed/LargeLemon
+
