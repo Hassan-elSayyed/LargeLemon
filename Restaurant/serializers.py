@@ -14,6 +14,7 @@ class BookingSerializer(serializers.ModelSerializer):
     class Meta:
         model = Booking
         fields = '__all__'
+        # fields = ['id', 'name', 'reservation_date', 'reservation_slot']
         
         
 class UserSerializer(serializers.ModelSerializer):

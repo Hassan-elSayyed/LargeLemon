@@ -9,6 +9,7 @@ mysqlclient = "*"
 djangorestframework = "*"
 djoser = "*"
 djangorestframework-xml = "*"
+djangorestframework-simplejwt = "*"
 
 [dev-packages]
 

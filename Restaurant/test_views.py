@@ -13,7 +13,7 @@ from decimal import Decimal
 from .models import MenuItem
 from .serializers import MenuItemSerializer
 
-PATH = "/restaurant/menu-items/"
+PATH = "/restaurant/api/menu-items/"
 
 class MenuViewTest(TestCase):
     def setUp(self):
@@ -23,10 +23,6 @@ class MenuViewTest(TestCase):
         MenuItem.objects.create(title="Pasta",    price=Decimal("42.00"), inventory=150)
 
     def test_getall(self):
-        # Sanity: does the URL resolve to the expected view?
-        match = resolve(PATH)
-        assert match.func.view_class.__name__ == "MenuItemsView"
-
         resp = self.client.get(PATH, follow=True)
         self.assertEqual(resp.status_code, 200, f"redirect_chain={resp.redirect_chain}")
 

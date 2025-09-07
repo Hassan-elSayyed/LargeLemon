@@ -38,9 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework.authtoken', # Turn off when switching to JWT    
     'djoser',
     'Restaurant',
-    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -80,8 +80,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'reservations',
-        'USER': 'root', 
-        'PASSWORD': 'Gurudev1@',
+        'USER': 'root', # Hi peer, plz use your USER
+        'PASSWORD': 'Gurudev1@', # Plz user your PASSWORD
         'HOST': '127.0.0.1',
         'PORT': '3306',
     }
@@ -140,9 +140,16 @@ REST_FRAMEWORK = {
         'rest_framework_xml.renderers.XMLRenderer',
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.TokenAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication', # for API clients • Turn off when switching to JWT
+        'rest_framework.authentication.SessionAuthentication', # for browser session (the HTML pages)
+        # 'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
 }
 
 DJOSER = {'USER_ID_FIELD': 'username'}
+
+# from datetime import timedelta
+# SIMPLE_JWT = {
+#     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=15),
+#     'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
+# }

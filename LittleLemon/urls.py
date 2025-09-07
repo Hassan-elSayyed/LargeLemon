@@ -16,26 +16,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
-from rest_framework import routers
-from Restaurant import views
-router = routers.DefaultRouter()
-router.register(r'bookings', views.BookingViewSet)
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('restaurant/', include('Restaurant.urls')),
-    path('restaurant/', include(router.urls)),
-    path('auth/', include('djoser.urls')),
-    path('auth/', include('djoser.urls.authtoken')),
+    path('auth/', include('djoser.urls')), # users/, users/me/, etc.
+    path('auth/', include('djoser.urls.authtoken')), # token/login/, token/logout/ • Turn off when switching to JWT
+    
+    # Require a template at templates/registration/login.html or template_name=...
+    # path('accounts/login/',  auth_views.LoginView.as_view(),  name='login'),
+    # path('accounts/logout/', auth_views.LogoutView.as_view(), name='logout'),
+    
+    # jwt/create, jwt/refresh, jwt/verify
+    # path('auth/', include('djoser.urls.jwt')), 
 ]
-
-
-# from rest_framework import routers
-# from Restaurant import views
-# router = routers.DefaultRouter()
-# router.register(r'users', views.UserViewSet)
-# urlpatterns = [
-#     path('', include(router.urls)),
-#     path('api_auth/', include('rest_framework.urls', namespace='rest_framework'))
-# ]
