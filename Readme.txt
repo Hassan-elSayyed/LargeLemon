@@ -2,9 +2,10 @@ Hi,
 Steps:
 1. Clone the repository from GitHub.
 2. Step into the cloned repository.
-3. run: pipenv install  (Installs the dependencies in the Pipfile)
+3. run: pipenv install  (Installs the dependencies that are in the Pipfile)
 4. run: pipenv shell (Activates the virtual environment)
-5. run: python manage.py runserver (Continue from there)
+5. Update the USER and PASSWORD of the mysql in settings.py
+6. run: python manage.py runserver (Continue from there)
 
 
 SUPERUSER
