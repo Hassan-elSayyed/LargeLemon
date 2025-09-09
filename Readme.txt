@@ -37,10 +37,10 @@ Top-level
 /admin/   -> admin
 
 Restaurant API
-/restaurant/menu-items/   -> menu-tems list
-/restaurant/menu-items/1/   -> single menu_item
-/restaurant/bookings/   -> booking-list
-/restaurant/bookings/1/   -> single booking (booking-detail )
+/restaurant/menu/   -> menu list
+/restaurant/menu/1/   -> single menu item
+/restaurant/bookings/   -> booking list
+/restaurant/bookings/1/   -> a single booking
 
 ___
 

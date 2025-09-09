@@ -2,15 +2,15 @@ from rest_framework import generics, viewsets
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly, IsAdminUser
 from django.contrib.auth.models import User
 
-from .models import MenuItem, Booking
+from .models import Menu, Booking
 from .serializers import MenuItemSerializer, BookingSerializer, UserSerializer
 
 
-class MenuItemViewSet(viewsets.ModelViewSet):
+class MenuViewSet(viewsets.ModelViewSet):
     """
     Read for everyone; write for authenticated users.
     """
-    queryset = MenuItem.objects.all()
+    queryset = Menu.objects.all()
     serializer_class = MenuItemSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
     
@@ -69,13 +69,13 @@ def book(request):
     return render(request, 'book.html', context)
 
 def menu(request):
-    menu_data = MenuItem.objects.all()
+    menu_data = Menu.objects.all()
     main_data = {"menu": menu_data}
     return render(request, 'menu.html', {"menu": main_data})
 
 def display_menu_item(request, pk=None): 
     if pk: 
-        menu_item = MenuItem.objects.get(pk=pk) 
+        menu_item = Menu.objects.get(pk=pk) 
     else: 
         menu_item = "" 
     return render(request, 'menu_item.html', {"menu_item": menu_item}) 

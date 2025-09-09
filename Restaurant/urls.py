@@ -4,8 +4,8 @@ from . import views
 from rest_framework.authtoken.views import obtain_auth_token
 
 router = DefaultRouter()
-router.register(r'menu-items', views.MenuItemViewSet, basename='menuitem')
-router.register(r'bookings', views.BookingViewSet, basename='booking')
+router.register(r'menu', views.MenuViewSet, basename='menu')
+router.register(r'booking', views.BookingViewSet, basename='booking')
 
 urlpatterns = [
     # HTML pages
