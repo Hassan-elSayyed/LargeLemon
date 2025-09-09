@@ -1,6 +1,11 @@
-from django.urls import path
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
 from . import views
 from rest_framework.authtoken.views import obtain_auth_token
+
+router = DefaultRouter()
+router.register(r'menu-items', views.MenuItemViewSet, basename='menuitem')
+router.register(r'bookings', views.BookingViewSet, basename='booking')
 
 urlpatterns = [
     # HTML pages
@@ -10,15 +15,20 @@ urlpatterns = [
     path('book/', views.book, name='book'), # {% url 'book' %}
     path('reservations/', views.reservations, name="reservations"), # {% url 'reservations' %}
     
+    # Auth token
+    path('api-token-auth/', obtain_auth_token, name='api_token_auth'),    
+    
+    # DRF ViewSets
+    path('', include(router.urls)),
+    
     # JSON used by pages (book.html)
     path('bookings/', views.bookings, name='bookings'), # JSON feed used by the template
         
     # API (DRF, machine-consumed)
-    path('api-token-auth/', obtain_auth_token, name='api_token_auth'),
-    path('api/menu-items/', views.MenuItemsView.as_view(), name='menu-tems'),
-    path('api/menu-items/<int:pk>/', views.SingleMenuItemView.as_view(), name='menu_item'),
-    path('api/bookings/', views.BookingsView.as_view(), name='booking-list'), # LIST/CREATE
-    path('api/bookings/<int:pk>/', views.SingleBookingView.as_view(), name='booking-detail'),  # RETR/UPD/DEL
+    # path('api/menu-items/', views.MenuItemsView.as_view(), name='menu-tems'),
+    # path('api/menu-items/<int:pk>/', views.SingleMenuItemView.as_view(), name='menu_item'),
+    # path('api/bookings/', views.BookingsView.as_view(), name='booking-list'), # LIST/CREATE
+    # path('api/bookings/<int:pk>/', views.SingleBookingView.as_view(), name='booking-detail'),  # RETR/UPD/DEL
 
     path('users/', views.UserViewSet.as_view(), name='users'), # admin-only, for debugging
 ]

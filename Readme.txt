@@ -37,19 +37,14 @@ Top-level
 /admin/   -> admin
 
 Restaurant API
-/restaurant/api/menu-items/   -> menu-tems
-/restaurant/api/menu-items/1/   -> menu_item
-/restaurant/api/bookings/   -> booking-list
-/restaurant/api/bookings/1/   -> booking-detail
+/restaurant/menu-items/   -> menu-tems list
+/restaurant/menu-items/1/   -> single menu_item
+/restaurant/bookings/   -> booking-list
+/restaurant/bookings/1/   -> single booking (booking-detail )
 
 ___
 
-Bookings API: IsAuthenticated -> requires token or session
-MenuItem API: IsAuthenticatedOrReadOnly -> anyone can view menu, only auth can change
-___
-
-
-Practice Peer-graded Assignment: Little Lemon Web Application
+Peer-graded Assignment: Little Lemon Web Application
 
 Project Title
 Back-end developer capstone project

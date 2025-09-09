@@ -1,4 +1,4 @@
-from rest_framework import generics
+from rest_framework import generics, viewsets
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly, IsAdminUser
 from django.contrib.auth.models import User
 
@@ -6,28 +6,42 @@ from .models import MenuItem, Booking
 from .serializers import MenuItemSerializer, BookingSerializer, UserSerializer
 
 
-class MenuItemsView(generics.ListCreateAPIView):
-    permission_classes = [IsAuthenticatedOrReadOnly]
+# class MenuItemsView(generics.ListCreateAPIView):
+#     permission_classes = [IsAuthenticatedOrReadOnly]
+#     queryset = MenuItem.objects.all()
+#     serializer_class = MenuItemSerializer
+class MenuItemViewSet(viewsets.ModelViewSet):
+    """
+    Read for everyone; write for authenticated users.
+    """
     queryset = MenuItem.objects.all()
     serializer_class = MenuItemSerializer
-    
-
-class SingleMenuItemView(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsAuthenticatedOrReadOnly]
-    queryset = MenuItem.objects.all()
-    serializer_class = MenuItemSerializer
     
 
-class BookingsView(generics.ListCreateAPIView):
-    queryset = Booking.objects.all().order_by("id")
+# class SingleMenuItemView(generics.RetrieveUpdateDestroyAPIView):
+#     permission_classes = [IsAuthenticatedOrReadOnly]
+#     queryset = MenuItem.objects.all()
+#     serializer_class = MenuItemSerializer
+    
+
+# class BookingsView(generics.ListCreateAPIView):
+#     queryset = Booking.objects.all().order_by("id")
+#     serializer_class = BookingSerializer
+#     permission_classes = [IsAuthenticated]  # or IsAuthenticatedOrReadOnly
+class BookingViewSet(viewsets.ModelViewSet):
+    """
+    Auth required for everything.
+    """    
+    queryset = Booking.objects.all().order_by('id')
     serializer_class = BookingSerializer
-    permission_classes = [IsAuthenticated]  # or IsAuthenticatedOrReadOnly
+    permission_classes = [IsAuthenticated]
     
     
-class SingleBookingView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Booking.objects.all()
-    serializer_class = BookingSerializer
-    permission_classes = [IsAuthenticated]    
+# class SingleBookingView(generics.RetrieveUpdateDestroyAPIView):
+#     queryset = Booking.objects.all()
+#     serializer_class = BookingSerializer
+#     permission_classes = [IsAuthenticated]    
     
     
 class UserViewSet(generics.ListCreateAPIView):    
