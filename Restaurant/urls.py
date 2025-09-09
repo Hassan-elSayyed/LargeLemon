@@ -14,6 +14,7 @@ urlpatterns = [
     path('bookings/', views.bookings, name='bookings'), # JSON feed used by the template
         
     # API (DRF, machine-consumed)
+    path('api-token-auth/', obtain_auth_token, name='api_token_auth'),
     path('api/menu-items/', views.MenuItemsView.as_view(), name='menu-tems'),
     path('api/menu-items/<int:pk>/', views.SingleMenuItemView.as_view(), name='menu_item'),
     path('api/bookings/', views.BookingsView.as_view(), name='booking-list'), # LIST/CREATE
