@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken', # Turn off when switching to JWT    
     'djoser',
-    'restaurant',
+    'Restaurant',
 ]
 
 MIDDLEWARE = [
@@ -80,8 +80,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'reservations',
-        'USER': 'user', # Plz use your USER
-        'PASSWORD': 'password', # Plz user your PASSWORD
+        'USER': 'root', # Plz use your USER
+        'PASSWORD': 'Gurudev1@', # Plz user your PASSWORD
         'HOST': '127.0.0.1',
         'PORT': '3306',
     }
