@@ -39,8 +39,8 @@ Top-level
 Restaurant API
 /restaurant/menu/   -> menu list
 /restaurant/menu/1/   -> single menu item
-/restaurant/bookings/   -> booking list
-/restaurant/bookings/1/   -> a single booking
+/restaurant/booking/   -> booking list
+/restaurant/booking/1/   -> a single booking
 
 ___
 
