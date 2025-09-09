@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken', # Turn off when switching to JWT    
     'djoser',
-    'Restaurant',
+    'restaurant',
 ]
 
 MIDDLEWARE = [
